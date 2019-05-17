@@ -1,0 +1,15 @@
+[
+    {
+        "test" : "1",
+        "object" : "2"
+    },
+    {
+        "test": "2",
+        "object": "3",
+        "a-unique-key": "Special"
+    },
+    {
+        "test": "3",
+        "object": "4"
+    }
+]
