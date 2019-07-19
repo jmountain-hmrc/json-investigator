@@ -8,6 +8,7 @@ use std::io::{Write, BufReader, BufRead, Error};
 use std::iter::Sum;
 use std::env;
 use std::collections::HashMap;
+use std::collections::HashSet;
 
 // Could have: Intersection of keys, median/mode/mean of intersected keys, keys unique to object
 
@@ -72,6 +73,25 @@ fn findMedianOfNumberIntersections(key: &String, vals: &Vec<Value>) {
     }
 }
 
+fn findUniqueKeys(key: &String, vals: &Vec<Value>) {
+    if vals.len() == 1 {
+        println!("Key unique amongst objects: {}", key)
+    }
+}
+
+fn findKeyWithAllSame(key: &String, vals: &Vec<Value>) {
+    let mut hash_set = HashSet::new();
+    for value in vals {
+        hash_set.insert(value.to_string());
+    }
+
+    if hash_set.len() == 1 {
+        let index = hash_set.get(&vals[0].to_string());
+
+        println!("Key has only one value across all objects - {}: {}", key, index.unwrap())
+    }
+} 
+
 fn main() {
     let args: Vec<String> = env::args().collect();
 
@@ -82,5 +102,9 @@ fn main() {
 
         findAveragesOfNumberIntersections(&key, &vals);
         findMedianOfNumberIntersections(&key, &vals);
+        findUniqueKeys(&key, &vals);
+        findKeyWithAllSame(&key, &vals);
+
+        println!("");
     }
 }
